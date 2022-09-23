@@ -1,0 +1,30 @@
+defaults:
+  - override hydra/launcher: basic # joblib
+  #- override hydra/sweeper: ax # use to find best prior weighting
+
+set_up:
+  data_fidelity: Kullback Leibler # can be 'Kullback Leibler' or 'Least Squares'
+  prior: Huber # can be 'None', 'Total Variation', 'Huber', 'Fair', 'Charbonnier'
+  operator: grad # can be 'grad' or 'dTV' or "identity"
+  warm_start: true
+  warm_start_iters: 10
+
+hyperparameters:
+  alpha: 1 # prior weighting in objective function
+  theta: .0001 # prior smoothing parameter (amount of deviation from TV)
+  epsilon: 0.001 # KL smoothing parameter
+
+algorithm_settings:
+  num_iters: 2500
+  admm: false
+  ladmm: true
+  pdhg: true
+  bfgs: true
+  gdes: true
+  osem: true
+
+image_settings:
+  image_size: 40 # size of 2D image 
+
+data_settings:
+  noise_level: 0.1 # scaling for amount of poisson noise in image - higher value = lower counts
