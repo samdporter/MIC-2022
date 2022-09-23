@@ -1,5 +1,6 @@
 /outputs*
 /multirun*
 /msg*
+/figures*
 
 test.ipynb
